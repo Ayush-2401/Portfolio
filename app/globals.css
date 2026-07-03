@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+:root {
+  /* Base */
+  --bg-primary: #0A0A0C;
+  --bg-secondary: #111318;
+  --bg-elevated: #17191F;
+  --border-subtle: #24262E;
+
+  /* Text */
+  --text-primary: #F2F2F0;
+  --text-secondary: #A0A3AD;
+  --text-muted: #63666F;
+
+  /* Accent */
+  --accent: #39FF88;
+  --accent-dim: #1E7A48;
+  --accent-glow: rgba(57, 255, 136, 0.25);
+
+  /* Semantic */
+  --success: #39FF88;
+  --warning: #FFC939;
+  --error: #FF5C5C;
+
+  /* Terminal-specific */
+  --term-bg: #0D0F12;
+  --term-header: #1A1D22;
+  --term-text: #D7FFEA;
+  --term-prompt: var(--accent);
+}
+
+@theme inline {
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-primary);
+
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-border-subtle: var(--border-subtle);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  --color-accent: var(--accent);
+  --color-accent-dim: var(--accent-dim);
+  --color-accent-glow: var(--accent-glow);
+
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+
+  --color-term-bg: var(--term-bg);
+  --color-term-header: var(--term-header);
+  --color-term-text: var(--term-text);
+  --color-term-prompt: var(--term-prompt);
+
+  --font-display: var(--font-space-grotesk), sans-serif;
+  --font-body: var(--font-inter), sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body), sans-serif;
+}
+
+/* Desktop custom cursor preparation */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: none;
+  }
+  
+  /* Prevent custom cursor hiding from affecting text selection/inputs globally immediately */
+  input, textarea, [contenteditable="true"] {
+    cursor: text;
+  }
+}
+
+/* Base custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
