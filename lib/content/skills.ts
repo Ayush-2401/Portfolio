@@ -12,27 +12,37 @@ export const skills: SkillCategory[] = [
   {
     category: "Languages",
     skills: [
-      { name: "Java", level: 90 },
-      { name: "TypeScript", level: 85 },
-      { name: "Python", level: 80 },
-      { name: "Rust", level: 70 },
+      { name: "Java", level: 95 },
+      { name: "Python", level: 90 },
+      { name: "JavaScript / TypeScript", level: 85 },
+      { name: "SQL", level: 80 },
     ],
   },
   {
-    category: "Frameworks & Tools",
+    category: "Java & Web",
     skills: [
-      { name: "React / Next.js", level: 85 },
-      { name: "FastAPI", level: 80 },
-      { name: "Android Studio", level: 75 },
+      { name: "Spring Boot / JavaFX", level: 85 },
+      { name: "React / Vite", level: 85 },
+      { name: "Flask / FastAPI", level: 80 },
       { name: "Tailwind CSS", level: 90 },
     ],
   },
   {
-    category: "Domains",
+    category: "AI & ML",
     skills: [
-      { name: "Full-Stack Web", level: 90 },
-      { name: "Computer Vision", level: 75 },
-      { name: "AI-assisted Dev", level: 85 },
+      { name: "TensorFlow / PyTorch", level: 80 },
+      { name: "OpenCV / YOLOv8", level: 85 },
+      { name: "Prompt Engineering", level: 95 },
+      { name: "Agentic Workflows", level: 90 },
+    ],
+  },
+  {
+    category: "Tools & Automation",
+    skills: [
+      { name: "Android Studio", level: 80 },
+      { name: "Git / GitHub / Docker", level: 85 },
+      { name: "n8n / UiPath RPA", level: 80 },
+      { name: "AWS (EC2/S3)", level: 75 },
     ],
   },
 ];

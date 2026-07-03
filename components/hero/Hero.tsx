@@ -4,6 +4,10 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { siteCopy } from '@/lib/content/site-copy';
 import KineticName from './KineticName';
+import dynamic from 'next/dynamic';
+import GithubStatsWidget from '@/components/shared/GithubStatsWidget';
+
+const HeroCanvas = dynamic(() => import('./HeroCanvas'), { ssr: false });
 
 export default function Hero() {
   const [typedRole, setTypedRole] = useState('');
@@ -40,6 +44,7 @@ export default function Hero() {
 
   return (
     <section className="min-h-[100svh] flex flex-col justify-center px-6 md:px-16 pt-24 pb-12 relative overflow-hidden">
+      <HeroCanvas />
       <div className="max-w-[1280px] mx-auto w-full flex flex-col gap-4 z-10">
         <h1 className="font-display text-[44px] md:text-[96px] leading-[1.1] tracking-[-0.02em] font-bold text-text-primary uppercase">
           <KineticName text={siteCopy.name} />
@@ -59,6 +64,15 @@ export default function Hero() {
         >
           <span className="text-accent mr-2">➜</span>
           <span className="text-[#D7FFEA]">~ $ whoami</span>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 2.7, duration: 0.5 }}
+          className="mt-6"
+        >
+          <GithubStatsWidget />
         </motion.div>
       </div>
       

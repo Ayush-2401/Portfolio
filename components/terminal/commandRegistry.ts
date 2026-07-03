@@ -65,7 +65,7 @@ const projectsHandler: CommandHandler = (args, { print }) => {
 };
 
 const triggerDownload = async (filename: string, print: TerminalContext['print']) => {
-  print(createLine(`Locating file... /home/ayush/files/${filename}`, 'system'));
+  print(createLine(`Locating file... ~/${filename}`, 'system'));
   
   let progress = 0;
   return new Promise<void>((resolve) => {
@@ -78,7 +78,7 @@ const triggerDownload = async (filename: string, print: TerminalContext['print']
         
         if (typeof document !== 'undefined') {
           const a = document.createElement('a');
-          a.href = `/files/${filename}`;
+          a.href = `/${filename}`; // Download from root of public folder
           a.download = filename;
           document.body.appendChild(a);
           a.click();
@@ -91,11 +91,21 @@ const triggerDownload = async (filename: string, print: TerminalContext['print']
 };
 
 const resumeHandler: CommandHandler = async (_, { print }) => {
-  await triggerDownload('Ayush_Kumar_Pandey_Resume.pdf', print);
+  await triggerDownload('ayush_resume.pdf', print);
 };
 
 const cvHandler: CommandHandler = async (_, { print }) => {
-  await triggerDownload('Ayush_Kumar_Pandey_CV.pdf', print);
+  await triggerDownload('ayush_cv.pdf', print);
+};
+
+const githubHandler: CommandHandler = (_, { print }) => {
+  print(createLine(`Opening GitHub profile...`, 'success'));
+  if (typeof window !== 'undefined') window.open(siteCopy.contact.github, '_blank');
+};
+
+const linkedinHandler: CommandHandler = (_, { print }) => {
+  print(createLine(`Opening LinkedIn profile...`, 'success'));
+  if (typeof window !== 'undefined') window.open(siteCopy.contact.linkedin, '_blank');
 };
 
 const contactHandler: CommandHandler = (_, { print }) => {
@@ -103,7 +113,7 @@ const contactHandler: CommandHandler = (_, { print }) => {
 };
 
 const socialsHandler: CommandHandler = (_, { print }) => {
-  print(createLine(`[G] GitHub:   ${siteCopy.contact.github}\n[L] LinkedIn: ${siteCopy.contact.linkedin}`));
+  print(createLine(`[G] GitHub:   ${siteCopy.contact.github}\n[L] LinkedIn: ${siteCopy.contact.linkedin}\n\nTip: Type 'github' or 'linkedin' to open directly.`));
 };
 
 const educationHandler: CommandHandler = (_, { print }) => {
@@ -153,7 +163,7 @@ const catHandler: CommandHandler = async (args, { cwd, print }) => {
   } else {
     if (typeof node.content === 'function') {
        if (node.name === 'resume.pdf' || node.name === 'cv.pdf') {
-           await triggerDownload(node.name === 'resume.pdf' ? 'Ayush_Kumar_Pandey_Resume.pdf' : 'Ayush_Kumar_Pandey_CV.pdf', print);
+           await triggerDownload(node.name === 'resume.pdf' ? 'ayush_resume.pdf' : 'ayush_cv.pdf', print);
        } else {
            node.content();
        }
@@ -198,6 +208,18 @@ const sudoHandler: CommandHandler = (_, { print }) => {
   print(createLine('ayush is not in the sudoers file. This incident will be reported.', 'error'));
 };
 
+const githubStatsHandler: CommandHandler = async (_, { print }) => {
+  print(createLine('Fetching latest GitHub stats...', 'system'));
+  try {
+    const res = await fetch('/api/github');
+    if (!res.ok) throw new Error('Failed to fetch');
+    const stats = await res.json();
+    print(createLine(`[Github] Stars: ${stats.stars} | Repos: ${stats.repos} | Forks: ${stats.forks}`, 'success'));
+  } catch (error) {
+    print(createLine('Error: Could not retrieve GitHub stats.', 'error'));
+  }
+};
+
 export const commands: Record<string, { description: string; handler: CommandHandler }> = {
   help: { description: 'List available commands', handler: helpHandler },
   whoami: { description: 'Who is Ayush?', handler: whoamiHandler },
@@ -206,6 +228,8 @@ export const commands: Record<string, { description: string; handler: CommandHan
   projects: { description: 'List or open projects', handler: projectsHandler },
   resume: { description: 'Download resume', handler: resumeHandler },
   cv: { description: 'Download CV', handler: cvHandler },
+  github: { description: 'Open GitHub profile', handler: githubHandler },
+  linkedin: { description: 'Open LinkedIn profile', handler: linkedinHandler },
   contact: { description: 'Contact info', handler: contactHandler },
   socials: { description: 'Social links', handler: socialsHandler },
   education: { description: 'Education details', handler: educationHandler },
@@ -219,5 +243,6 @@ export const commands: Record<string, { description: string; handler: CommandHan
   history: { description: 'Show command history', handler: historyHandler },
   exit: { description: 'Return to top', handler: exitHandler },
   gui: { description: 'Return to top', handler: exitHandler },
-  sudo: { description: '???', handler: sudoHandler }
+  sudo: { description: '???', handler: sudoHandler },
+  'github-stats': { description: 'Fetch live GitHub profile stats', handler: githubStatsHandler }
 };

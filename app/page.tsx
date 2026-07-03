@@ -8,13 +8,13 @@ import Timeline from '@/components/experience/Timeline';
 import Terminal from '@/components/terminal/Terminal';
 import Contact from '@/components/contact/Contact';
 import Footer from '@/components/footer/Footer';
-import { Layers, Zap, Code2, Cpu } from 'lucide-react';
+import { BrainCircuit, Bot, Code2, Cpu } from 'lucide-react';
 
 const coreSkills = [
-  { icon: <Code2 size={32} />, label: "Frontend", codeSnippet: "npm install react next" },
-  { icon: <Layers size={32} />, label: "Design", codeSnippet: "@theme inline {\n  --color: var(--accent);\n}" },
-  { icon: <Cpu size={32} />, label: "Backend", codeSnippet: "router.post('/api', handler)" },
-  { icon: <Zap size={32} />, label: "Motion", codeSnippet: "gsap.to(el, { x: 100 })" },
+  { icon: <Code2 size={32} />, label: "Java Full-Stack", codeSnippet: "SpringApplication.run(App.class)" },
+  { icon: <BrainCircuit size={32} />, label: "Machine Learning", codeSnippet: "model.fit(X_train, y_train)" },
+  { icon: <Cpu size={32} />, label: "Computer Vision", codeSnippet: "cv2.CascadeClassifier()" },
+  { icon: <Bot size={32} />, label: "AI Agents", codeSnippet: "agent_executor.invoke(prompt)" },
 ];
 
 export default function Home() {
