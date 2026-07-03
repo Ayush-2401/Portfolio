@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "@/components/shared/CustomCursor";
+import CommandPalette from "@/components/nav/CommandPalette";
+import KonamiEgg from "@/components/shared/KonamiEgg";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -35,6 +37,8 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col font-body">
         <CustomCursor />
+        <CommandPalette />
+        <KonamiEgg />
         {children}
       </body>
     </html>

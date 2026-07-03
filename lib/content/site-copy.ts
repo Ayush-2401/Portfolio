@@ -1,5 +1,5 @@
 export const siteCopy = {
-  name: "Ayush Pandey",
+  name: "Ayush Kumar Pandey",
   role: "Software Developer",
   tagline: "Always bringing the fight.",
   about: {

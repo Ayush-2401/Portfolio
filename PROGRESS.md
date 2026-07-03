@@ -7,12 +7,11 @@
 - [x] Phase 1: static structure + content
 - [x] Phase 2: terminal subsystem
 - [x] Phase 3: motion & interaction layer
-- [ ] Phase 4: stretch features (Pending User Review)
+- [ ] Phase 4: stretch features (In Progress)
 
 ## Known issues / TODO
 - MISSING: Resume/CV PDF files do not exist in `public/files/`. Need Ayush to provide them.
-- User needs to review the site before Phase 4 begins.
 - Stretch goals: Command palette, Konami code, GitHub stats, etc.
 
 ## Notes for next session
-- Phase 3 complete. Waiting for Ayush's review of Phases 0-3 before beginning Phase 4 stretch features.
+- User approved Phases 0-3. Beginning Phase 4 stretch features (Command palette, Konami code).
