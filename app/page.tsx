@@ -8,13 +8,17 @@ import Timeline from '@/components/experience/Timeline';
 import Terminal from '@/components/terminal/Terminal';
 import Contact from '@/components/contact/Contact';
 import Footer from '@/components/footer/Footer';
-import { BrainCircuit, Bot, Code2, Cpu } from 'lucide-react';
+import { BrainCircuit, Bot, Code2, Cpu, Globe, Database, Network, TerminalSquare } from 'lucide-react';
 
 const coreSkills = [
   { icon: <Code2 size={32} />, label: "Java Full-Stack", codeSnippet: "SpringApplication.run(App.class)" },
   { icon: <BrainCircuit size={32} />, label: "Machine Learning", codeSnippet: "model.fit(X_train, y_train)" },
+  { icon: <Globe size={32} />, label: "React & Next.js", codeSnippet: "export default function App()" },
   { icon: <Cpu size={32} />, label: "Computer Vision", codeSnippet: "cv2.CascadeClassifier()" },
+  { icon: <Database size={32} />, label: "Cloud Databases", codeSnippet: "SELECT * FROM users WHERE active=1" },
   { icon: <Bot size={32} />, label: "AI Agents", codeSnippet: "agent_executor.invoke(prompt)" },
+  { icon: <Network size={32} />, label: "System Design", codeSnippet: "new AWS.AutoScaling()" },
+  { icon: <TerminalSquare size={32} />, label: "DevOps & CI/CD", codeSnippet: "docker-compose up -d" },
 ];
 
 export default function Home() {
