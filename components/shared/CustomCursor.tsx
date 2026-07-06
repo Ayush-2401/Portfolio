@@ -42,48 +42,23 @@ export default function CustomCursor() {
 
   if (isTouchDevice) return null;
 
+  const dotVariant = {
+    width: 12,
+    height: 12,
+    x: "-50%",
+    y: "-50%",
+    backgroundColor: "var(--color-accent)",
+    border: "0px solid transparent",
+    mixBlendMode: "difference" as const,
+    opacity: 1,
+    borderRadius: "9999px"
+  };
+
   const variants = {
-    default: {
-      width: 12,
-      height: 12,
-      x: "-50%",
-      y: "-50%",
-      backgroundColor: "var(--color-accent)",
-      border: "0px solid transparent",
-      mixBlendMode: "difference" as const,
-      opacity: 1
-    },
-    hover: {
-      width: 48,
-      height: 48,
-      x: "-50%",
-      y: "-50%",
-      backgroundColor: "transparent",
-      border: "1px solid var(--color-accent)",
-      mixBlendMode: "normal" as const,
-      opacity: 1
-    },
-    project: {
-      width: 64,
-      height: 64,
-      x: "-50%",
-      y: "-50%",
-      backgroundColor: "var(--color-bg-elevated)",
-      border: "1px solid var(--color-border-subtle)",
-      mixBlendMode: "normal" as const,
-      opacity: 1
-    },
-    terminal: {
-      width: 8,
-      height: 20,
-      x: "0%",
-      y: "-50%",
-      backgroundColor: "var(--color-accent)",
-      border: "0px solid transparent",
-      mixBlendMode: "difference" as const,
-      opacity: 1,
-      borderRadius: 0
-    }
+    default: dotVariant,
+    hover: dotVariant,
+    project: dotVariant,
+    terminal: dotVariant
   };
 
   return (
@@ -97,15 +72,6 @@ export default function CustomCursor() {
       animate={cursorType}
       initial="default"
       transition={{ type: "tween", ease: "backOut", duration: 0.15 }}
-    >
-      {cursorType === "hover" && cursorText && (
-        <span className="font-mono text-[10px] text-accent uppercase font-semibold">
-          {cursorText}
-        </span>
-      )}
-      {cursorType === "project" && (
-        <span className="font-mono text-[14px] text-accent">→</span>
-      )}
-    </motion.div>
+    />
   );
 }

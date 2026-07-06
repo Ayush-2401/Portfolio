@@ -38,10 +38,10 @@ export default function SectionDivider({ word1 = "BUILD", word2 = "SHIP" }: Sect
         animate={isInView ? "visible" : "hidden"}
         className="flex flex-col items-center font-display text-[80px] md:text-[140px] font-bold leading-[0.85] tracking-tighter text-text-primary uppercase"
       >
-        <div className="overflow-hidden">
+        <div className="overflow-hidden pb-8 -mb-8 z-10">
           <motion.div variants={wordVariants}>{word1}</motion.div>
         </div>
-        <div className="overflow-hidden text-border-subtle/40 italic">
+        <div className="overflow-hidden -mt-2 md:-mt-5 pb-8 -mb-8 pr-8 -mr-8 text-text-muted hover:text-text-secondary italic transition-colors duration-500">
           <motion.div variants={wordVariants}>{word2}</motion.div>
         </div>
       </motion.div>
