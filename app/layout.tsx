@@ -4,6 +4,7 @@ import "./globals.css";
 import CustomCursor from "@/components/shared/CustomCursor";
 import CommandPalette from "@/components/nav/CommandPalette";
 import KonamiEgg from "@/components/shared/KonamiEgg";
+import SmoothScroll from "@/components/shared/SmoothScroll";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -36,10 +37,12 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-body">
-        <CustomCursor />
-        <CommandPalette />
-        <KonamiEgg />
-        {children}
+        <SmoothScroll>
+          <CustomCursor />
+          <CommandPalette />
+          <KonamiEgg />
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );
