@@ -5,6 +5,7 @@ import CustomCursor from "@/components/shared/CustomCursor";
 import CommandPalette from "@/components/nav/CommandPalette";
 import KonamiEgg from "@/components/shared/KonamiEgg";
 import SmoothScroll from "@/components/shared/SmoothScroll";
+import ScrollProgress from "@/components/shared/ScrollProgress";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -41,6 +42,7 @@ export default function RootLayout({
           <CustomCursor />
           <CommandPalette />
           <KonamiEgg />
+          <ScrollProgress />
           {children}
         </SmoothScroll>
       </body>
