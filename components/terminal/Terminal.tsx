@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import { useTerminalStore } from './useTerminalStore';
+import { useCursorStore } from '@/lib/store/cursorStore';
 import { commands } from './commandRegistry';
 import QuickCommandChips from './QuickCommandChips';
 
@@ -11,6 +12,7 @@ export default function Terminal() {
   const scrollbackRef = useRef<HTMLDivElement>(null);
   
   const { cwd, setCwd, history, historyIndex, setHistoryIndex, scrollback, print, clear, addToHistory } = useTerminalStore();
+  const { setCursorType, resetCursor } = useCursorStore();
 
   useEffect(() => {
     if (scrollbackRef.current) {
@@ -95,6 +97,8 @@ export default function Terminal() {
         <div 
           className="rounded-xl overflow-hidden border border-border-subtle shadow-2xl bg-term-bg cursor-text"
           onClick={focusInput}
+          onMouseEnter={() => setCursorType('terminal')}
+          onMouseLeave={resetCursor}
         >
           {/* Terminal Chrome */}
           <div className="h-10 bg-term-header flex items-center px-4 border-b border-border-subtle select-none">

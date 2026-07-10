@@ -58,7 +58,7 @@ export default function CustomCursor() {
     default: dotVariant,
     hover: dotVariant,
     project: dotVariant,
-    terminal: dotVariant
+    terminal: { ...dotVariant, opacity: 0 }
   };
 
   return (
